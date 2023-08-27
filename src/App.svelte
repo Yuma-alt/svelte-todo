@@ -1,11 +1,8 @@
 <script lang="ts">
   import type { TodoItem } from "./store";
-  import { PriorityNames } from "./store";
-  import { Priorities } from "./store";
-  import { slide } from "svelte/transition";
   import CreateTaskButton from "./components/Button.svelte";
-  import DeleteButton from "./components/DeleteButton.svelte";
   import InputText from "./components/InputText.svelte";
+  import TodoItemList from "./components/TodoItem.svelte";
   import PrioritySelector from "./components/PrioritySelector.svelte";
 
   let title = "";
@@ -51,18 +48,7 @@
       {:else}
         <ul class="list-group">
           {#each sortTodoListByPriority as todoItem (todoItem.id)}
-            <li transition:slide class="list-group-item align-middle">
-              <span
-                class="badge m-1 text-dark"
-                class:bg-danger={todoItem.priority === Priorities.High}
-                class:bg-warning={todoItem.priority === Priorities.Mid}
-                class:bg-success={todoItem.priority === Priorities.Low}
-              >
-                {PriorityNames[todoItem.priority]}
-              </span>
-              {todoItem.title}
-              <DeleteButton on:click={() => completeTask(todoItem.id)} />
-            </li>
+            <TodoItemList {todoItem} {completeTask} />
           {/each}
         </ul>
       {/if}
