@@ -5,6 +5,10 @@
   import TodoItemList from "./components/TodoItem.svelte";
   import PrioritySelector from "./components/PrioritySelector.svelte";
 
+  const LOW = 1;
+  const MIDDLE = 2;
+  const HIGH = 3;
+
   let title = "";
   let priority: number = 2;
   let todoList: TodoItem[] = [];
@@ -16,7 +20,7 @@
 
   const clickTaskCreatingButton = () => {
     const id = new Date().getTime();
-    if (priority === 1 || priority == 2 || priority == 3) {
+    if (priority === LOW || priority == MIDDLE || priority == HIGH) {
       todoList = [...todoList, { id, title, priority }];
     }
     title = "";
