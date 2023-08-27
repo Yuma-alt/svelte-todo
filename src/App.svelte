@@ -6,6 +6,7 @@
   import CreateTaskButton from "./components/Button.svelte";
   import DeleteButton from "./components/DeleteButton.svelte";
   import InputText from "./components/InputText.svelte";
+  import PrioritySelector from "./components/PrioritySelector.svelte";
 
   let title = "";
   let priority: number = 2;
@@ -35,14 +36,7 @@
       <h2>TODOリスト</h2>
       <form>
         <InputText bind:value={title} />
-        <div class="form-group">
-          <label for="priority">優先度</label>
-          <select class="form-control" bind:value={priority}>
-            {#each Object.entries(PriorityNames) as [index, label]}
-              <option value={Number(index)}>{label}</option>
-            {/each}
-          </select>
-        </div>
+        <PrioritySelector bind:selectedPriority={priority} />
         <CreateTaskButton
           bind:disableButton={disableCreationButton}
           on:click={clickTaskCreatingButton}
