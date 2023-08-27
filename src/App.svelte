@@ -48,7 +48,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
       {#if todoList.length === 0}
-        <div>アイテムを作成してください</div>
+        <div>必要なタスクを作成してください</div>
       {:else}
         <ul class="list-group">
           {#each sortTodoListByPriority as todoItem (todoItem.id)}
