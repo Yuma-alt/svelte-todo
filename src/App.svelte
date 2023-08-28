@@ -6,7 +6,7 @@
   import PrioritySelector from "./components/PrioritySelector.svelte";
 
   const LOW = 1;
-  const MIDDLE = 2;
+  const MID = 2;
   const HIGH = 3;
 
   let title = "";
@@ -20,7 +20,7 @@
 
   const clickTaskCreatingButton = () => {
     const id = new Date().getTime();
-    if (priority === LOW || priority == MIDDLE || priority == HIGH) {
+    if (priority === LOW || priority == MID || priority == HIGH) {
       todoList = [...todoList, { id, title, priority }];
     }
     title = "";
